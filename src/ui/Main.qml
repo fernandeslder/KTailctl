@@ -54,6 +54,11 @@ Kirigami.ApplicationWindow {
                 text: i18n("About")
             },
             Kirigami.Action {
+                icon.name: "internet-web-browser"
+                text: i18n("Open Admin Console")
+                onTriggered: Qt.openUrlExternally("https://login.tailscale.com/admin/machines")
+            },
+            Kirigami.Action {
                 visible: root.isOperator
                 icon.name: ((KTailctl.Tailscale.status.backendState == KTailctl.Status.Starting) || (KTailctl.Tailscale.status.backendState == KTailctl.Status.Running)) ? "process-stop" : "media-playback-start"
                 text: ((KTailctl.Tailscale.status.backendState == KTailctl.Status.Starting) || (KTailctl.Tailscale.status.backendState == KTailctl.Status.Running)) ? "Stop Tailscale" : "Start Tailscale"
